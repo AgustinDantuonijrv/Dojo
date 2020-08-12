@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    app:startDestination="@id/olduserviewFragment">
+
+    <fragment
+        android:id="@+id/olduserviewFragment"
+        android:name="com.example.dojo.OlduserviewFragment"
+        android:label="fragment_olduserview"
+        tools:layout="@layout/fragment_olduserview" />
+    <fragment
+        android:id="@+id/Cambiarusuario"
+        android:name="com.example.dojo.CambiarUsuarioFragment"
+        android:label="Cambiar De Usuario"
+        tools:layout="@layout/fragment_cambiar_usuario" />
+    <fragment
+        android:id="@+id/editarperfil"
+        android:name="com.example.dojo.EditarPerfilFragment"
+        android:label="Editar Perfil"
+        tools:layout="@layout/fragment_editar_perfil" />
+    <fragment
+        android:id="@+id/verusuario"
+        android:name="com.example.dojo.Fragmentovistadeusuario"
+        android:label="Mi Perfil"
+        tools:layout="@layout/fragment_fragmentovistadeusuarios" />
+
+    <fragment
+        android:id="@+id/Mensajeria"
+        android:name="com.example.dojo.MensajeriaFragment"
+        android:label="Mensajeria"
+        tools:layout="@layout/mensajeria" />
+    <fragment
+        android:id="@+id/Reportarbugs"
+        android:name="com.example.dojo.PlaystoreFragment"
+        android:label="Playstore"
+        tools:layout="@layout/fragment_playstore" />
+    <fragment
+        android:id="@+id/Pagojiujitsu"
+        android:name="com.example.dojo.PagoJiujitsuFragment"
+        android:label="Pago Jiujitsu"
+        tools:layout="@layout/fragment_pago_jiujitsu" />
+    <fragment
+        android:id="@+id/Pagojudo"
+        android:name="com.example.dojo.PagoJudoFragment"
+        android:label="Pago Judo"
+        tools:layout="@layout/fragment_pago_judo" />
+    <fragment
+        android:id="@+id/Pagoyoga"
+        android:name="com.example.dojo.PagoYogaFragment"
+        android:label="Pago Yoga"
+        tools:layout="@layout/fragment_pago_yoga" />
+    <fragment
+        android:id="@+id/contactoFragment"
+        android:name="com.example.dojo.ContactoFragment"
+        android:label="fragment_contacto"
+        tools:layout="@layout/fragment_contacto" />
+    <fragment
+        android:id="@+id/fisico"
+        android:name="com.example.dojo.FisicoFragment"
+        android:label="fragment_fisico"
+        tools:layout="@layout/fragment_fisico" />
+</navigation>

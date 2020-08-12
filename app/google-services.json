@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "856133463277",
+    "firebase_url": "https://dojoapp-a9d00.firebaseio.com",
+    "project_id": "dojoapp-a9d00",
+    "storage_bucket": "dojoapp-a9d00.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:856133463277:android:1d8387e45f319beb33f0e4",
+        "android_client_info": {
+          "package_name": "com.example.dojo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "856133463277-au4ch9ebvv3amehgmj4099btvtgue58g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzwln53iinF53lT32-aJ8mDSmPkQcyHIU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "856133463277-au4ch9ebvv3amehgmj4099btvtgue58g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

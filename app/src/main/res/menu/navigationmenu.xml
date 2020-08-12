@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/home"
+        android:icon="@drawable/home"
+        android:id="@+id/olduserviewFragment"/>
+
+    <item android:title="@string/PAGOS"
+          android:id="@+id/pagos"
+          android:icon="@drawable/payment"/>
+
+    <item android:title="Actividades">
+    <menu>
+    <group>
+    <item
+        android:id="@+id/fisico"
+        android:title="@string/Fisico"/>
+
+    <item
+        android:id="@+id/Pagojiujitsu"
+        android:title="@string/jiu"/>
+
+    <item
+        android:id="@+id/Pagojudo"
+        android:title="@string/judo"/>
+
+    <item
+        android:id="@+id/Pagoyoga"
+        android:title="@string/yoga"/>
+    </group>
+    </menu>
+</item>
+
+ <item android:title="Usuarios">
+    <menu  android:icon="@drawable/emptyuser">
+        <group>
+        <item
+            android:id="@+id/Cambiarusuario"
+            android:title="@string/cambiarusuario"
+            />
+
+        <item
+            android:id="@+id/editarperfil"
+            android:title="@string/editarperfil"/>
+        <item
+            android:id="@+id/verusuario"
+            android:title="Mi Perfil"/>
+        </group>
+    </menu>
+
+</item>
+
+    <item android:title="Otros">
+        <menu>
+            <group>
+    <item
+        android:id="@+id/Mensajeria"
+        android:title="@string/Mensajeria"
+        android:icon="@drawable/messeage"/>
+    <item
+        android:id="@+id/Reportarbugs"
+        android:title="@string/ReportarBugs"
+        android:icon="@mipmap/playstore"/>
+
+    <item android:id="@+id/contactoFragment"
+        android:icon="@drawable/contactos"
+        android:title="@string/Contactos"/>
+            </group>
+        </menu>
+    </item>
+</menu>

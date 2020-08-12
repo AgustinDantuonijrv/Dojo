@@ -1,0 +1,87 @@
+<resources>
+    <string name="app_name">BELEZA DOJO</string>
+    <string name="regis">Registrarme</string>
+    <string name="enter_email">Ingrese Email</string>
+    <string name="enter_password">Ingrese Contraseña</string>
+    <string name="login">Loguearse</string>
+    <string name="registrar">No tienes una cuenta?</string>
+    <string name="Derechos">Los derechos de esta aplicacion y servicio pertenecen al cliente Cristian y el uso y disposicion de la misma quedan a su completa intención</string>
+    <string name="recordarme">Recordarme Como Usuario</string>
+    <string name="servicio">Bienvenido a la App del Dojo</string>
+    <string name="subir">Subir</string>
+    <string name="Biblioteca">Biblioteca</string>
+    <string name="pagos">Realizar Pago</string>
+    <string name="explicacion">Para Acceder A La Biblioteca Debe Tener Permiso del Administrador. Puede pagar utilizando mercado pago o contactarse con el Administrador si cree que es un error</string>
+    <string name="permisoadmin">Para Acceder A La Biblioteca Debe Tener Permiso del Administrador</string>
+    <string name="nacimiento">Fecha De Nacimiento</string>
+    <string name="SOPORTE">Soporte Técnico</string>
+    <string name="cris">Cristian Apellido</string>
+    <string name="numero">11-3898-7284</string>
+    <string name="DeseCrear"> Deseo Crear Un Nuevo Usuario</string>
+    <string name="yatengounacuenta">Ya Tengo Una Cuenta</string>
+    <string name="loguearme">Loguearme</string>
+    <string name="JUJITSU"> Biblioteca jiu jitsu</string>
+    <string name="home">Home</string>
+    <string name="JUDO">Biblioteca Judo</string>
+    <string name="MENUDEUSUARIO">Usuario</string>
+    <string name="nombredeususraio"> Nombre de usuario </string>
+    <string name="Faixa"> Faixa </string>
+    <string name="PAGOS">Pagos</string>
+    <string name="pagojiu">Pago de Jiu Jitsu</string>
+    <string name="pagojudo">Pago de Judo</string>
+    <string name="pagoyoga">Pago de Yoga</string>
+    <string name="cambiarusuario">Cambiar Usuario</string>
+    <string name="editarperfil">Editar Perfil</string>
+    <string name="otros">Otros</string>
+    <string name="Mensajeria">Mensajeria</string>
+    <string name="ReportarBugs">Comentar en playstore</string>
+    <string name="Contactos">Contactos</string>
+    <string name="jiu">Jiu Jitsu</string>
+    <string name="judo">Judo</string>
+    <string name="yoga">Yoga</string>
+    <string name="Fisico">Físico</string>
+    <string name="Nutricion">Nutrición</string>
+    <string name="hello_blank_fragment">hola desde otro fragmento</string>
+    <string name="holamaam">Hola desde reportar bugs</string>
+    <string name="dniingresa">DNI (por motivos de seguridad)</string>
+
+    <string-array name="InformaciónFísico">
+        <item>Rutina Día 1</item>
+        <item>Rutina Día 2</item>
+        <item>Rutina Día 3</item>
+        <item>Rutina Día 4</item>
+        <item>Rutina Día 5</item>
+        <item>Records</item>
+        <item>Peso</item>
+    </string-array>
+    <string name="pesoactual">Peso Actual</string>
+    <string name="series">   Series</string>
+    <string name="descanso">   Descanso</string>
+    <string name="peso">   Peso:</string>
+    <string name="observaciones">   Observaciones :</string>
+    <string name="nombre_de_usuario">Nombre de Usuario:</string>
+    <string name="peso_objetivo">Peso Objetivo</string>
+    <string name="ejercicio">Ejercicio</string>
+    <string name="repeticiones">Repeticiones</string>
+    <string name="peso_maximo">Peso Maximo</string>
+    <string name="objetivo">Objetivo</string>
+
+    <string-array name="Semana">
+        <item>Lunes</item>
+        <item>Martes</item>
+        <item>Miercoles</item>
+        <item>Jueves</item>
+        <item>Viernes</item>
+        <item>Sabado</item>
+    </string-array>
+
+    <string-array name="Belts">
+        <item> Blanco </item>
+        <item> Azul </item>
+        <item> Violeta </item>
+        <item> Marron </item>
+        <item> Negro </item>
+        <item> Rojo </item>
+    </string-array>
+
+</resources>

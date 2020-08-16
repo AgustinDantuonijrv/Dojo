@@ -131,11 +131,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     users.child(userapasar).child("permisoyoga").setValue(false);
     users.child(userapasar).child("profesor").setValue(profesor);
     users.child(userapasar).child("Mensaje").setValue("Acá se muestran los comentarios de parte de tu entrenador con respecto a tu desempeño");
-    if (uri != null) {
-        users.child(userapasar).child("ImagenUri").setValue(uri);
-    }else {
-        users.child(userapasar).child("ImagenUri").setValue("No Seleccionado");
-    }
+
     }
 
     public  Boolean validate() {

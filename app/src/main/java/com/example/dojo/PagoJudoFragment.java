@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 
-public class PagoJudoFragment extends Fragment implements AdapterVideos.OnItemListener {
+public class PagoJudoFragment extends Fragment implements Adaptervideosjudo.OnItemListener {
 
     public DatabaseReference Videos;
     public RecyclerView recyclerView;
@@ -79,5 +79,6 @@ public class PagoJudoFragment extends Fragment implements AdapterVideos.OnItemLi
     public void onItemClick(int position) {
         Intent intent = new Intent(getActivity().getApplicationContext(), Reproductor.class);
         intent.putExtra("video", list.get(position));
+        startActivity(intent);
     }
 }

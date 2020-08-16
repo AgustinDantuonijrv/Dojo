@@ -54,9 +54,9 @@ public class MensajeriaFragment extends Fragment {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        users = FirebaseDatabase.getInstance().getReference("users");
+        users = FirebaseDatabase.getInstance().getReference("Mensajerias");
 
-        users.child("Mensaje General").child("Mensaje").addListenerForSingleValueEvent(new ValueEventListener() {
+        users.child("Mensaje").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
               messeage = snapshot.getValue(String.class);
@@ -67,7 +67,7 @@ public class MensajeriaFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-        users.child("Mensaje General").child("Grupo").addListenerForSingleValueEvent(new ValueEventListener() {
+        users.child("Grupo").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
              clase = snapshot.getValue(String.class);

@@ -75,5 +75,6 @@ public class PagoJiujitsuFragment extends Fragment implements AdapterVideos.OnIt
     public void onItemClick(int position) {
         Intent intent = new Intent(getActivity().getApplicationContext(), Reproductor.class);
         intent.putExtra("video", list.get(position));
+        startActivity(intent);
     }
 }

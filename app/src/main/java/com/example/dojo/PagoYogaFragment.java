@@ -80,6 +80,7 @@ public class PagoYogaFragment extends Fragment implements Adapteryogavid.OnItemL
     public void onItemClick(int position) {
         Intent intent = new Intent(getActivity().getApplicationContext(), Reproductor.class);
         intent.putExtra("video", list.get(position));
+        startActivity(intent);
     }
 
 }

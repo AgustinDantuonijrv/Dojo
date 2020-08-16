@@ -135,7 +135,9 @@ public class Fragmentovistadeusuario extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     uri = snapshot.getValue(String.class);
-                    setimage(uri);
+
+                    ImageView imageView = getView().findViewById(R.id.userphoto);
+                    Glide.with(getActivity().getApplicationContext()).load(uri).centerCrop().into(imageView);
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {

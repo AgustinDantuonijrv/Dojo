@@ -24,6 +24,7 @@ public class Reproductor extends AppCompatActivity {
 
       initviews();
     }
+    //WE AVE TO HAVE IN CONSIDERATION THAT THE POSITION GETS THE URI AND THE TITTLE TO SET IN THE TEXT AND THEN WE HAVE TO SUPPORT ALL THAT IS BASICALLY NEEDED IN A MEDIA PLAYER (SEE ANDROID DEVELOPERS OFICIAL DOCUMENTATION)
     private void initviews(){
         videoView = findViewById(R.id.videoView);
         startvideo();

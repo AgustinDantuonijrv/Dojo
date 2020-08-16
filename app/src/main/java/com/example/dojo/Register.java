@@ -74,6 +74,7 @@ public class  Register extends AppCompatActivity implements View.OnClickListener
 
     private FirebaseStorage storage;
     private StorageReference mStorageRef;
+    public DatabaseReference databaseReference;
 
     Uri pickedImageUri ;
 
@@ -95,6 +96,8 @@ public class  Register extends AppCompatActivity implements View.OnClickListener
 
         try {
             initViews();
+
+            databaseReference = FirebaseDatabase.getInstance().getReference();
 
             storage = FirebaseStorage.getInstance();
             mStorageRef = storage.getReference();
@@ -298,54 +301,58 @@ public class  Register extends AppCompatActivity implements View.OnClickListener
     }
 
     private void uploadimage() {
-        final ProgressDialog pd = new ProgressDialog(this);
-        pd.setTitle("Subiendo la imagen seleccionada");
-        String randomkey = UUID.randomUUID().toString();
-        final StorageReference riversRef = mStorageRef.child("images/" + randomkey);
+        if (!TextUtils.isEmpty(editTextEmail.getText().toString()) && !TextUtils.isEmpty(editTextPassword.getText().toString())) {
+            final ProgressDialog pd = new ProgressDialog(this);
+            pd.setTitle("Subiendo la imagen seleccionada");
+            String randomkey = UUID.randomUUID().toString();
+            final StorageReference riversRef = mStorageRef.child("images/" + randomkey);
 
-        riversRef.putFile(filePath)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        //getdownoalesur();
-                         riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                               String email = editTextEmail.getText().toString();
-                               //get the substring
-                                int pos = email.indexOf("@");
-                                String username = email.substring(0,pos);
-                                Toast.makeText(Register.this, "nombredeusuarioquesubelafoto:" + username,Toast.LENGTH_SHORT).show();
-                               stringuri = uri.toString();
-                                users.child(username).child("ImagenUrideregister").setValue(stringuri).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()){
-                                                Snackbar.make(findViewById(android.R.id.content),"Se Cargo su información de perfil correctamente", Snackbar.LENGTH_LONG).show();
-                                        } else {
-                                            String message = task.getException().toString();
-                                            Toast.makeText(getApplicationContext(),"Error:"+ message, Toast.LENGTH_SHORT).show();
+            riversRef.putFile(filePath)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    String email = editTextEmail.getText().toString();
+                                    //get the substring
+                                    int pos = email.indexOf("@");
+                                    String username = email.substring(0, pos);
+                                    Toast.makeText(Register.this, "nombredeusuarioquesubelafoto:" + username, Toast.LENGTH_SHORT).show();
+                                    stringuri = uri.toString();
+                                    ImageUserPhoto.setImageURI(Uri.parse(stringuri));
+                                    users.child(username).child("ImagenUri").setValue(stringuri).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Snackbar.make(findViewById(android.R.id.content), "Se Cargo su información de perfil correctamente", Snackbar.LENGTH_LONG).show();
+                                            } else {
+                                                String message = task.getException().toString();
+                                                Toast.makeText(getApplicationContext(), "Error:" + message, Toast.LENGTH_SHORT).show();
+                                            }
                                         }
-                                    }
-                                });
-                            }
-                        });
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                       pd.dismiss();
-                        Toast.makeText(Register.this, "No se pudo subir la imagen", Toast.LENGTH_SHORT).show();
-                    }
-                }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
-                      double progressPercent = (100.00 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                      pd.setMessage("Porcentaje" + (int) progressPercent + "%");
-            }
-        });
+                                    });
+                                }
+                            });
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            pd.dismiss();
+                            Toast.makeText(Register.this, "No se pudo subir la imagen", Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
+                    double progressPercent = (100.00 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                    pd.setMessage("Porcentaje" + (int) progressPercent + "%");
+                }
+            });
 
+        } else {
+            Toast.makeText(Register.this, "Debe llenar todos los datos de usuario antes de elegir una imagen", Toast.LENGTH_SHORT).show();
+        }
     }
     
     @Override
@@ -383,6 +390,7 @@ public class  Register extends AppCompatActivity implements View.OnClickListener
 
                         if (!usuarioexistente) {
                             Intent intent = new Intent(Register.this, MainActivity.class);
+                            intent.putExtra("photouri", stringuri);
                             startActivity(intent);
                         } else {
                             Toast.makeText(Register.this, "Si ya posee una cuenta puede proceder a loguearse", Toast.LENGTH_SHORT).show();

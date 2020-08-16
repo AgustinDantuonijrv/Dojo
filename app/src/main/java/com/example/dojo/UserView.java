@@ -2,7 +2,9 @@ package com.example.dojo;
 
 import android.content.Intent;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.BoringLayout;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -49,6 +51,8 @@ public class UserView extends FragmentActivity {
 
         users = FirebaseDatabase.getInstance().getReference("users");
 
+        String uri = getIntent().getStringExtra("photouser");
+
         intencion = getIntent().getStringExtra("user");
         int pos = intencion.indexOf("@");
 
@@ -59,6 +63,7 @@ public class UserView extends FragmentActivity {
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
             @Override
             public void handleOnBackPressed() {
+
                 // Handle the back button event
                 selectedFragment = new OlduserviewFragment();
 

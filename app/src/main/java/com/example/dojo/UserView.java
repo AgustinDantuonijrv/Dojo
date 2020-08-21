@@ -1,19 +1,12 @@
 package com.example.dojo;
 
 import android.content.Intent;
-
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.BoringLayout;
 import android.view.MenuItem;
 import android.view.View;
 
-import android.widget.Toast;
-
 import androidx.activity.OnBackPressedCallback;
-import androidx.activity.OnBackPressedDispatcherOwner;
 import androidx.annotation.NonNull;
-
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -21,7 +14,6 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -54,11 +46,21 @@ public class UserView extends FragmentActivity {
         String uri = getIntent().getStringExtra("photouser");
 
         intencion = getIntent().getStringExtra("user");
+        /*
+          userapasar = email.substring(0,pos);
+       if (userapasar.contains(".")){
+           userapasar = email.substring(0,pos2);
+       }
+         */
         int pos = intencion.indexOf("@");
+        int pos2 = intencion.indexOf(".");
 
         userstringdeloginymain = intencion.substring(0, pos);
+        if (userstringdeloginymain.contains(".")){
+            userstringdeloginymain = intencion.substring(0,pos2);
+        }
 
-        Toast.makeText(UserView.this, "Nombre de usuario obtenido:" + userstringdeloginymain, Toast.LENGTH_SHORT).show();
+   //     Toast.makeText(UserView.this, "Nombre de usuario obtenido:" + userstringdeloginymain, Toast.LENGTH_SHORT).show();
 
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
             @Override
@@ -84,7 +86,7 @@ public class UserView extends FragmentActivity {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     //here we get the data from the snapshot
                   mensaje = snapshot.getValue(String.class);
-                  Toast.makeText(UserView.this, "Mensaje Principal" + mensaje, Toast.LENGTH_SHORT).show();
+           //       Toast.makeText(UserView.this, "Mensaje Principal" + mensaje, Toast.LENGTH_SHORT).show();
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
@@ -135,14 +137,23 @@ public class UserView extends FragmentActivity {
                     switch (item.getItemId()) {
                         case R.id.Pagojiujitsu:
                             selectedFragment = new PagoJiujitsuFragment();
+                            Bundle bundlejiu = new Bundle();
+                            bundlejiu.putString("userjiu", userstringdeloginymain);
+                            selectedFragment.setArguments(bundlejiu);
                             replace(selectedFragment);
                             break;
                         case R.id.Pagojudo:
                             selectedFragment = new PagoJudoFragment();
+                            Bundle bundlejudo = new Bundle();
+                            bundlejudo.putString("userjudo", userstringdeloginymain);
+                            selectedFragment.setArguments(bundlejudo);
                             replace(selectedFragment);
                             break;
                         case R.id.Pagoyoga:
                             selectedFragment = new PagoYogaFragment();
+                            Bundle bundleyoga = new Bundle();
+                            bundleyoga.putString("useryoga", userstringdeloginymain);
+                            selectedFragment.setArguments(bundleyoga);
                             replace(selectedFragment);
                             break;
                         case R.id.Cambiarusuario:
@@ -164,6 +175,9 @@ public class UserView extends FragmentActivity {
                         case R.id.Mensajeria:
                             selectedFragment = new MensajeriaFragment();
                             replace(selectedFragment);
+                            break;
+                        case R.id.OutFragment:
+                           System.exit(0);
                             break;
                         case R.id.Reportarbugs:
                             selectedFragment = new PlaystoreFragment();
@@ -208,6 +222,7 @@ public class UserView extends FragmentActivity {
                     }
                 });
     }
+
 
     public  void replace(Fragment selectedFragment){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

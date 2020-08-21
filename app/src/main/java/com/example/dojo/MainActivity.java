@@ -1,12 +1,8 @@
 package com.example.dojo;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -14,25 +10,15 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
-import com.google.firebase.auth.FirebaseAuth;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     public Button Aregistrar;
@@ -66,11 +52,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         SharedPreferences shareduri = getSharedPreferences("photouri", MODE_PRIVATE);
         uri = shareduri.getString("photouri", "");
 
-        Toast.makeText(MainActivity.this, "uri: " + uri, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(MainActivity.this, "uri: " + uri, Toast.LENGTH_SHORT).show();
 
         SharedPreferences sharedPref = getSharedPreferences("email", MODE_PRIVATE);
         email = sharedPref.getString("email", "");
-        Toast.makeText(MainActivity.this, "Estamos consiguiendo el email" + email, Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(MainActivity.this, "Estamos consiguiendo el email" + email, Toast.LENGTH_SHORT).show();
 
         SharedPreferences sharedPreferences1 = getSharedPreferences("password", MODE_PRIVATE);
         password = sharedPreferences1.getString("password", "");
@@ -87,14 +73,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         alog.setOnClickListener(this);
 
         int pos = email.indexOf("@");
-        userapasar = email.substring(0, pos);
-        Toast.makeText(MainActivity.this, "userpasar:" + userapasar, Toast.LENGTH_SHORT).show();
+        int pos2 = email.indexOf(".");
+
+       userapasar = email.substring(0,pos);
+       if (userapasar.contains(".")){
+           userapasar = email.substring(0,pos2);
+       }
+       // Toast.makeText(MainActivity.this, "userpasar:" + userapasar, Toast.LENGTH_SHORT).show();
 
         usernames.child("contadorusuarios").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 contadorusers = snapshot.getValue(Integer.class);
-                Toast.makeText(MainActivity.this, "valorcontadorusers:" + contadorusers, Toast.LENGTH_SHORT).show();
+          //      Toast.makeText(MainActivity.this, "valorcontadorusers:" + contadorusers, Toast.LENGTH_SHORT).show();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -196,7 +187,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
         }catch (Exception e){
-            Toast.makeText(MainActivity.this,"ERROR:" + e, Toast.LENGTH_LONG).show();
+          //  Toast.makeText(MainActivity.this,"ERROR:" + e, Toast.LENGTH_LONG).show();
         }
     }
 }

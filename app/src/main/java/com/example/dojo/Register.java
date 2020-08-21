@@ -40,7 +40,6 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
@@ -66,7 +65,7 @@ public class  Register extends AppCompatActivity implements View.OnClickListener
     //Declaration Button
     Button buttonRegister;
     Button buttonlog1;
-    public boolean usuarioexistente = false;
+    public boolean usuarioexistente;
     static int  PreqCode = 1;
     static int REQUESCODE = 1;
 
@@ -117,7 +116,7 @@ public class  Register extends AppCompatActivity implements View.OnClickListener
 
 
         } catch (Exception e) {
-            Toast.makeText(Register.this, "e" + e, Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(Register.this, "e" + e, Toast.LENGTH_SHORT).show();
         }
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -154,8 +153,7 @@ public class  Register extends AppCompatActivity implements View.OnClickListener
         } else {
             progressDialog.setMessage("Realizando registro en linea...");
             progressDialog.show();
-            usuarioexistente = false; //probando si asi se puede resetear el valor cada vez que se ingresa un usuario
-
+            usuarioexistente = false; //probando si asi se puede resetear el valor cada vez que se ingresa un usua
             //registramos un nuevo usuario
             firebaseAuth.createUserWithEmailAndPassword(email, password) // usamos las variables creadas para poder tener los datos de los edit text y creamos el usuario
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -176,8 +174,7 @@ public class  Register extends AppCompatActivity implements View.OnClickListener
                                             }
                                         });
                                 Toast.makeText(Register.this, "Se ha registrado el usuario con el email: " + editTextEmail.getText(), Toast.LENGTH_LONG).show();
-                                    }
-                            else {
+                            } else {
                                 if (task.getException() instanceof FirebaseAuthUserCollisionException) {
                                     Toast.makeText(Register.this, "Ese usuario ya existe ", Toast.LENGTH_SHORT).show();
                                     usuarioexistente = true;
@@ -328,7 +325,7 @@ public class  Register extends AppCompatActivity implements View.OnClickListener
                                                 Snackbar.make(findViewById(android.R.id.content), "Se Cargo su información de perfil correctamente", Snackbar.LENGTH_LONG).show();
                                             } else {
                                                 String message = task.getException().toString();
-                                                Toast.makeText(getApplicationContext(), "Error:" + message, Toast.LENGTH_SHORT).show();
+                                            //    Toast.makeText(getApplicationContext(), "Error:" + message, Toast.LENGTH_SHORT).show();
                                             }
                                         }
                                     });
@@ -387,13 +384,14 @@ public class  Register extends AppCompatActivity implements View.OnClickListener
                         editor2.putString("password", password);
                         editor2.apply();
 
+                        Toast.makeText(Register.this, "" + usuarioexistente, Toast.LENGTH_SHORT).show();
 
-                        if (!usuarioexistente) {
+                        if (usuarioexistente ) {
+                            Toast.makeText(Register.this, "Si ya posee una cuenta puede proceder a loguearse", Toast.LENGTH_SHORT).show();
+                        } else {
                             Intent intent = new Intent(Register.this, MainActivity.class);
                             intent.putExtra("photouri", stringuri);
                             startActivity(intent);
-                        } else {
-                            Toast.makeText(Register.this, "Si ya posee una cuenta puede proceder a loguearse", Toast.LENGTH_SHORT).show();
                         }
                     } catch (Exception e) {
                         Toast.makeText(Register.this, "ERRORacá:" + e, Toast.LENGTH_SHORT).show();
@@ -404,7 +402,11 @@ public class  Register extends AppCompatActivity implements View.OnClickListener
                     toLogIn(view);
                  break;
             case R.id.imageuser:
-                checkAndRequestForPermission(view);
+                if (editTextPassword.getText().toString().isEmpty()| editTextEmail.getText().toString().isEmpty()){
+                 Toast.makeText(Register.this, "Debe Ingresar sus credenciales antes de seleccionar la foto", Toast.LENGTH_SHORT).show();
+                } else {
+                    checkAndRequestForPermission(view);
+                }
                 break;
         }
     }

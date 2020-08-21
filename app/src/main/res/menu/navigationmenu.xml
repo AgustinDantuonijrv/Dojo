@@ -65,7 +65,13 @@
     <item android:id="@+id/contactoFragment"
         android:icon="@drawable/contactos"
         android:title="@string/Contactos"/>
+                <item
+                    android:id="@+id/OutFragment"
+                    android:title="Salir"
+                    android:icon="@drawable/door"
+                    />
             </group>
         </menu>
     </item>
+
 </menu>

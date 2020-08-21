@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.854" />
 
     <TextView
-        android:id='@+id/mppodes'
+        android:id='@+id/mppodes1'
         android:layout_width="432dp"
         android:layout_height="246dp"
         android:paddingTop='50dp'
@@ -37,7 +37,7 @@
         app:layout_constraintVertical_bias="0.09" />
 
     <TextView
-        android:id="@+id/mppodes2"
+        android:id="@+id/mppodes"
         android:layout_width='match_parent'
         android:layout_height='wrap_content'
         android:paddingTop='50dp'

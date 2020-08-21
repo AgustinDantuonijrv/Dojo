@@ -1,13 +1,6 @@
 package com.example.dojo;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,17 +8,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.google.firebase.auth.FirebaseAuth;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import static android.content.Context.MODE_PRIVATE;
 
 
 public class Fragmentovistadeusuario extends Fragment {
@@ -184,12 +175,12 @@ public class Fragmentovistadeusuario extends Fragment {
     public void setimage (String uri) {
         ImageView userphoto = (ImageView) getView().findViewById(R.id.userphoto);
         if (uri!= null) {
-            Toast.makeText(getActivity().getApplicationContext(), "ENTRE NO SOY NULO" + Uri.parse(uri).toString(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getActivity().getApplicationContext(), "ENTRE NO SOY NULO" + Uri.parse(uri).toString(), Toast.LENGTH_SHORT).show();
            // userphoto.setImageURI(Uri.parse(uri));
             Glide.with(getActivity().getApplicationContext()).load(uri).into(userphoto);
         }
         else {
-            Toast.makeText(getActivity().getApplicationContext(), "Imagen Nula", Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(getActivity().getApplicationContext(), "Imagen Nula", Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -39,7 +39,7 @@
     <string name="jiu">Jiu Jitsu</string>
     <string name="judo">Judo</string>
     <string name="yoga">Yoga</string>
-    <string name="Fisico">Físico</string>
+    <string name="Fisico"> Preparación Física </string>
     <string name="Nutricion">Nutrición</string>
     <string name="hello_blank_fragment">hola desde otro fragmento</string>
     <string name="holamaam">Hola desde reportar bugs</string>

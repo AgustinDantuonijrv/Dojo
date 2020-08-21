@@ -12,6 +12,12 @@
         android:label="fragment_olduserview"
         tools:layout="@layout/fragment_olduserview" />
     <fragment
+        android:id="@+id/OutFragment"
+        android:name="com.example.dojo.OutFragment"
+        android:label="Salir"
+        tools:layout="@layout/fragment_out"
+        />
+    <fragment
         android:id="@+id/Cambiarusuario"
         android:name="com.example.dojo.CambiarUsuarioFragment"
         android:label="Cambiar De Usuario"

@@ -122,7 +122,7 @@ public class Login  extends AppCompatActivity implements View.OnClickListener {
     }
 
     public void toRegister(View view){
-        Intent intent = new Intent(view.getContext(), Register.class);
+        Intent intent = new Intent(view.getContext(), Resetearpassword.class);
         startActivityForResult(intent, 0);
     }
 
@@ -237,7 +237,7 @@ public class Login  extends AppCompatActivity implements View.OnClickListener {
                                         startActivity(intentlogmain);
                                     }
                                  else {
-                                    Toast.makeText(Login.this, "No Se Pudo Loguear", Toast.LENGTH_SHORT).show();
+                            //        Toast.makeText(Login.this, "No Se Pudo Loguear", Toast.LENGTH_SHORT).show();
                                 }
 
                            // Intent intent = new Intent(Login.this, UserView.class);
@@ -255,7 +255,7 @@ public class Login  extends AppCompatActivity implements View.OnClickListener {
                     break;
             }
         }catch (Exception e) {
-            Toast.makeText(Login.this, "Este es el trycatch del onclick" + e, Toast.LENGTH_SHORT).show();
+           // Toast.makeText(Login.this, "Este es el trycatch del onclick" + e, Toast.LENGTH_SHORT).show();
         }
     }
 }

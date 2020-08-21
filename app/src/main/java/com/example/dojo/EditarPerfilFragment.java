@@ -1,17 +1,16 @@
 package com.example.dojo;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -39,7 +38,7 @@ public class EditarPerfilFragment extends Fragment  {
         Bundle bundleedit = this.getArguments();
         if (bundleedit != null) {
             user = bundleedit.getString("useredit", "");
-            Toast.makeText(getActivity().getApplicationContext(), "username:" + user, Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(getActivity().getApplicationContext(), "username:" + user, Toast.LENGTH_SHORT).show();
         }
 
         try {
@@ -185,7 +184,7 @@ public class EditarPerfilFragment extends Fragment  {
             faixat.setSelection(2);
         }
         if (faixa.contains("Marron")) {
-            Toast.makeText(getActivity().getApplicationContext(), "Marron", Toast.LENGTH_SHORT).show();
+        //    Toast.makeText(getActivity().getApplicationContext(), "Marron", Toast.LENGTH_SHORT).show();
             faixat.setSelection(3);
         }
         if (faixa.contains("Negro")) {
@@ -195,7 +194,7 @@ public class EditarPerfilFragment extends Fragment  {
             faixat.setSelection(5);
         }
 
-        Toast.makeText(getActivity().getApplicationContext(), "faixa: " + faixa, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(getActivity().getApplicationContext(), "faixa: " + faixa, Toast.LENGTH_SHORT).show();
     }
 
     public void settextnacimiento(String fechadenacimiento) {

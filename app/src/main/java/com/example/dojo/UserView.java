@@ -30,8 +30,10 @@ public class UserView extends FragmentActivity {
     public String Nombre;
     public String mensaje;
     private FirebaseAuth firebaseAuth;
+
     public String intencion;
     String pickedImageUri ;
+
     public String userstringdeloginymain;
 
     @Override
@@ -45,13 +47,12 @@ public class UserView extends FragmentActivity {
 
         String uri = getIntent().getStringExtra("photouser");
 
-        intencion = getIntent().getStringExtra("user");
-        /*
-          userapasar = email.substring(0,pos);
-       if (userapasar.contains(".")){
-           userapasar = email.substring(0,pos2);
-       }
-         */
+        if (getIntent().getStringExtra("user")!= null) {
+            intencion = getIntent().getStringExtra("user");
+        } else {
+            intencion = getIntent().getStringExtra("email");
+        }
+
         int pos = intencion.indexOf("@");
         int pos2 = intencion.indexOf(".");
 
@@ -177,7 +178,8 @@ public class UserView extends FragmentActivity {
                             replace(selectedFragment);
                             break;
                         case R.id.OutFragment:
-                           System.exit(0);
+                           //System.exit(0);
+                            logout();
                             break;
                         case R.id.Reportarbugs:
                             selectedFragment = new PlaystoreFragment();
@@ -223,6 +225,13 @@ public class UserView extends FragmentActivity {
                 });
     }
 
+    public void logout() {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(UserView.this, Login.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
 
     public  void replace(Fragment selectedFragment){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
